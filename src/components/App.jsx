@@ -2,22 +2,24 @@ import React from "react";
 import Entry from "./Entry";
 import emojipedia from "../emojipedia";
 
+function CreateEntry(oneEntry) {
+  return (
+    <Entry
+      key={oneEntry.id}
+      emoji={oneEntry.emoji}
+      name={oneEntry.name}
+      description={oneEntry.meaning}
+    />
+  );
+}
+
 function App() {
   return (
     <div>
       <h1>
         <span>emojipedia</span>
       </h1>
-
-      <dl className="dictionary">
-        <Entry
-          emoji={emojipedia[0].emoji}
-          name={emojipedia[0].name}
-          description={emojipedia[0].meaning}
-        />
-        {/* <Entry />
-        <Entry /> */}
-      </dl>
+      <dl className="dictionary">{emojipedia.map(CreateEntry)}</dl>
     </div>
   );
 }
